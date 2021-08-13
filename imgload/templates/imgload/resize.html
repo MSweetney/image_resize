@@ -1,0 +1,21 @@
+{% extends 'imgload/base.html' %}
+{% block title %}
+<title>Resize</title>
+{% endblock title %}
+
+
+{% block content %}
+<a href="{% url 'home' %}"> <p>Назад к списку</p> </a>
+{% if image.img %}
+<h1>{{image.img}}</h1>
+<img src="{{image.img.url}}">
+{% else %}
+<h1>{{image.url}}</h1>
+<img src="{{image.url}}">
+{% endif %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить</button>
+</form>
+{% endblock content %}
